@@ -1,0 +1,54 @@
+<div class="row">
+        {% for person in people %}
+            <div class="col-xl-3 col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="dropdown float-end"><a class="text-muted dropdown-toggle font-size-16" href="#"
+                                                           role="button" data-bs-toggle="dropdown"
+                                                           aria-haspopup="true"><i
+                                class="bx bx-dots-horizontal-rounded"></i></a>
+                            <div class="dropdown-menu dropdown-menu-end"><a class="dropdown-item"
+                                                                            href="{% url 'edit_person' person.id %}">Edit</a>
+                                <a class="dropdown-item" href="{% url 'remove_person' person.id %}">Remove</a></div>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            {% if person %}
+                                <div><img src="{{ person.image.url }}" alt=""
+                                          class="avatar-md rounded-circle img-thumbnail"/></div>
+                            {% else %}
+                                <div class="avatar-md">
+                                    <div class="avatar-title bg-soft-primary text-primary display-6 m-0 rounded-circle">
+                                        <i class="bx bxs-user-circle"></i>
+                                    </div>
+                                </div>
+                            {% endif %}
+                            <div class="flex-1 ms-3"><h5 class="font-size-16 mb-1"><a href="#"
+                                                                                      class="text-dark">{{ person.full_name }}</a>
+                            </h5> <span class="badge badge-soft-success mb-0">{{ person.job }}</span>
+                            </div>
+                        </div>
+                        <div class="mt-3 pt-1"><p class="text-muted mb-0"><i
+                                class="mdi mdi-phone font-size-15 align-middle pe-2 text-primary"></i>{{ person.phone }}
+                        </p>
+                            <p class="text-muted mb-0 mt-2"><i
+                                    class="mdi mdi-email font-size-15 align-middle pe-2 text-primary"></i> <a
+                                    href="/cdn-cgi/l/email-protection" class="__cf_email__"
+                                    data-cfemail="f7a79f8e9b9b9e84b096839b9e99b784878ed994989a">{{ person.gmail }}</a>
+                            </p>
+                            <p class="text-muted mb-0 mt-2"><i
+                                    class="mdi mdi-google-maps font-size-15 align-middle pe-2 text-primary"></i>{{ person.address }}
+                            </p></div>
+                        <div class="d-flex gap-2 pt-4">
+                            <button type="button" class="btn btn-soft-primary btn-sm w-50"><i
+                                    class="bx bx-user me-1"></i> Profile
+                            </button>
+                            <button type="button" class="btn btn-primary btn-sm w-50"><i
+                                    class="bx bx-message-square-dots me-1"></i> Contact
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
